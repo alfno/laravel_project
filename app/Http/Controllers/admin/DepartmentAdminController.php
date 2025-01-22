@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
 
 
-class DepartmentAdminController extends Controller
+class DepartmentAdminController
 {
     public function index()
     {
         //
-        return view('department-admin', [
+        return view('admin.department-admin', [
             'title' => 'Department',
             'departments' => Department::all()
         ]);

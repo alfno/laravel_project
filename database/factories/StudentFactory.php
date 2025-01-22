@@ -20,7 +20,8 @@ class StudentFactory extends Factory
             'name' => fake()->name(),
             'grade_id' =>  fake()->numberBetween(1,36),
             'email' => fake()->unique()->safeEmail(),
-            'adress' => fake()->address(),
+            'telepon'  => fake()->phoneNumber(),
+            'address' => fake()->address(),
         ];
     }
 }

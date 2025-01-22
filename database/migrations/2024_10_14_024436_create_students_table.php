@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('grade_id');
             $table->string('email')->unique();
-            $table->text('adress');
+            $table->text('address');
+            $table->string('telepon');
             $table->timestamps();
         });
     }
