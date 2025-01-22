@@ -13,7 +13,7 @@ class Grade extends Model
     use HasFactory;
 
     // protected $with = ['students'];
-
+    protected $fillable = ['name', 'department_id'];
     public function students(): HasMany
     {
         return $this->hasMany(Student::class);

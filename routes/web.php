@@ -48,18 +48,18 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
-//     Route::prefix('grades')->group(function () {
-//         Route::get('/', [\App\Http\Controllers\Admin\GradeAdminController::class, 'index']);
-//         Route::get('/create', [\App\Http\Controllers\Admin\GradeAdminController::class, 'create']);
-//         Route::post('/store', [\App\Http\Controllers\Admin\GradeAdminController::class, 'store']);
-//         Route::get('/edit/{grades}', [\App\Http\Controllers\Admin\GradeAdminController::class, 'edit'])
-//             ->name('admin.grade.edit');
-//         Route::put('/update/{grades}', [\App\Http\Controllers\Admin\GradeAdminController::class, 'update']);
-//     });
-// });
+    Route::prefix('grades')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\GradeAdminController::class, 'index']);
+        Route::get('/create', [\App\Http\Controllers\Admin\GradeAdminController::class, 'create']);
+        Route::post('/store', [\App\Http\Controllers\Admin\GradeAdminController::class, 'store']);
+        Route::get('/edit/{grades}', [\App\Http\Controllers\Admin\GradeAdminController::class, 'edit'])
+            ->name('admin.grade.edit');
+        Route::put('/update/{grades}', [\App\Http\Controllers\Admin\GradeAdminController::class, 'update']);
+    });
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
