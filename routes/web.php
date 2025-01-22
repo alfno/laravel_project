@@ -61,15 +61,15 @@ Route::prefix('admin')->group(function () {
 //     });
 // });
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
-//     Route::prefix('departments')->group(function () {
-//         Route::get('/', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'index']);
-//         Route::get('/create', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'create']);
-//         Route::post('/store', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'store']);
-//         Route::get('/edit/{department}', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'edit'])
-//             ->name('admin.department.edit');
-//         Route::put('/update/{department}', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'update']);
-//     });
-// });
+    Route::prefix('departments')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'index']);
+        Route::get('/create', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'create']);
+        Route::post('/store', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'store']);
+        Route::get('/edit/{department}', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'edit'])
+            ->name('admin.department.edit');
+        Route::put('/update/{department}', [\App\Http\Controllers\Admin\DepartmentAdminController::class, 'update']);
+    });
+});

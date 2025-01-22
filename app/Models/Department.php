@@ -10,5 +10,5 @@ class Department extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = ['name', 'desc'];
 }
