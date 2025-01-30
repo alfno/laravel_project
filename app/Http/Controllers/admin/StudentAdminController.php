@@ -16,14 +16,12 @@ class StudentAdminController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $students = Student::with('grade')->latest()->get();
-        return view('admin.student.index', compact('students'), [
-            'title' => "Students",
-            'students' => $students
-            // 'students' => $students
-        ]);
-    }
+{
+    $students = Student::with('grade')->latest()->paginate(10);
+    return view('admin.student.index', compact('students'), [
+        'title' => "Students"
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.

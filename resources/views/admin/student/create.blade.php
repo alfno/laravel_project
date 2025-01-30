@@ -20,6 +20,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div>
+                        <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
+                        <input type="text" name="department" id="department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Department" readonly>
+                    </div>
                     <div class="w-full">
                         <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">phone</label>
                         <input type="text" name="telepon" id="telepon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type phone number" required="">
@@ -42,4 +46,36 @@
             </form>
         </div>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var gradeSelect = document.getElementById('grade_id');
+            var departmentInput = document.getElementById('department');
+
+            gradeSelect.addEventListener('change', function() {
+                var gradeText = gradeSelect.options[gradeSelect.selectedIndex].text;
+
+                if (gradeText.includes('PPLG')) {
+                    departmentInput.value = 'PPLG';
+                } else if (gradeText.includes('Animasi 3D')) {
+                    departmentInput.value = 'Animasi 3D';
+                } else if (gradeText.includes('Animasi 2D')) {
+                    departmentInput.value = 'Animasi 2D';
+                } else if (gradeText.includes('DG')) {
+                    departmentInput.value = 'DG';
+                } else if (gradeText.includes('TG')) {
+                    departmentInput.value = 'TG';
+                } else if (gradeText.includes('SENI LUKIS')) {
+                    departmentInput.value = 'SENI LUKIS';
+                } else if (gradeText.includes('TATA BOGA')) {
+                    departmentInput.value = 'TATA BOGA';
+                } else if (gradeText.includes('TKR')) {
+                    departmentInput.value = 'TKR';
+                } else {
+                    departmentInput.value = '';
+                }
+            });
+        });
+    </script>
+
 </x-layout-admin>
