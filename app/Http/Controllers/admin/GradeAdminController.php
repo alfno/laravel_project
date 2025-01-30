@@ -14,7 +14,7 @@ class GradeAdminController extends Controller
      */
     public function index()
     {
-        $grades = Grade::with(['students', 'department'])->latest()->get();
+        $grades = Grade::with(['students', 'department'])->latest()->paginate(10);
         return view('admin.grade.index', compact('grades'), [
             'title' => 'Grades',
             'grades' => $grades
