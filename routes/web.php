@@ -22,7 +22,8 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/students', [StudentController::class, 'index']);
-Route::get('/students-admin', [StudentAdminController::class, 'index']);
+Route::get('/students-admin', [StudentAdminController::class, 'index'])->name('admin.students.index');
+
 
 Route::get('/grades', [GradeController::class, 'index']);
 Route::get('/grades-admin', [GradeAdminController::class, 'index']);

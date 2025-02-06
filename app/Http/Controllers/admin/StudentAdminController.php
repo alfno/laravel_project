@@ -15,13 +15,32 @@ class StudentAdminController extends Controller
         /**
      * Display a listing of the resource.
      */
-    public function index()
-{
-    $students = Student::with('grade')->latest()->paginate(10);
-    return view('admin.student.index', compact('students'), [
-        'title' => "Students"
-    ]);
-}
+    public function index(Request $request)
+    {
+        $query = Student::with('grade');
+
+        // Jika ada input pencarian, cari di beberapa kolom
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('address', 'like', '%' . $search . '%')
+                  ->orWhereHas('grade', function ($q) use ($search) {
+                      $q->where('name', 'like', '%' . $search . '%');
+                  });
+            });
+        }
+
+        $students = $query->orderBy('created_at', 'desc')->paginate(10)->appends(['search' => $request->search]);;
+
+        return view('admin.student.index', [
+            'students' => $students,
+            'title' => "Students",
+            'search' => $request->search ?? ''
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
